@@ -13,14 +13,14 @@ class BallisticComputationsImpl: BallisticComputations {
 
     override fun calcMaxDistance(v0: Int, alpha: Int): Double {
         val alphaRad = alpha * Math.PI / 180
-        return 2 * v0 * sin(alphaRad) / (2 * g)
+        return 2 * v0 * sin(alphaRad) / g
     }
 
     override fun computeValues(ballisticInput: BallisticInput): BallisticResult {
         return computeValues(ballisticInput.v0, ballisticInput.alpha)
     }
 
-    override fun computeValues(v0: Int, alpha: Int): BallisticResult {
+    private fun computeValues(v0: Int, alpha: Int): BallisticResult {
         return BallisticResult(
             calcMaxHeight(v0),
             calcMaxDistance(v0, alpha)

@@ -2,10 +2,8 @@ package com.nuwe.challenge.computerwoman.cli
 
 import com.nuwe.challenge.computerwoman.computing.BallisticComputationsImpl
 import com.nuwe.challenge.computerwoman.config.*
-import com.nuwe.challenge.computerwoman.helper.checkIfDirectoryExists
-import com.nuwe.challenge.computerwoman.helper.createJsonString
-import com.nuwe.challenge.computerwoman.helper.readJsonInput
-import com.nuwe.challenge.computerwoman.helper.writeJsonFile
+import com.nuwe.challenge.computerwoman.helper.FileHelper
+import com.nuwe.challenge.computerwoman.helper.JsonHelper
 import com.nuwe.challenge.computerwoman.model.BallisticInput
 import com.nuwe.challenge.computerwoman.model.BallisticOutput
 import org.slf4j.Logger
@@ -16,8 +14,11 @@ import org.springframework.shell.standard.ShellOption
 
 @ShellComponent
 class BallisticShell(
-    val LOG: Logger,
-    val ballisticComputer: BallisticComputationsImpl) {
+    val ballisticComputer: BallisticComputationsImpl,
+    val jsonHelper: JsonHelper,
+    val fileHelper: FileHelper,
+    val LOG: Logger
+) {
 
     var outputPath: String = "${System.getProperty("user.home")}/Documents/nuwe_challenges/results"
 
@@ -42,26 +43,26 @@ class BallisticShell(
     @ShellMethod(COMPUTE_FILE)
     fun computeFile(@ShellOption(help = PATH_TO_FILE) pathToFile: String,
                     @ShellOption(help = TO_FILE) toFile: Boolean): String {
-        val input = readJsonInput<BallisticInput>(pathToFile)
+        val input = jsonHelper.readJsonInput<BallisticInput>(pathToFile)
         return compute(input, toFile)
     }
 
-    private fun compute(input: BallisticInput, toFile: Boolean): String {
+    fun compute(input: BallisticInput, toFile: Boolean): String {
         val result = ballisticComputer.computeValues(input)
 
         BallisticOutput(input, result).let {
-            return if(toFile){
-                writeJsonFile(outputPath, it)
+            return if (toFile) {
+                jsonHelper.writeJsonFile(outputPath, it)
                 "$SAVED_AT$outputPath"
             } else {
-                createJsonString(it)
+                jsonHelper.convertObjectToJsonString(it)
             }
         }
     }
 
     @ShellMethod(CHANGE_PATH)
     fun changePath(@ShellOption(help = OUTPUT_PATH) path: String) =
-        if(checkIfDirectoryExists(path)) {
+        if (fileHelper.checkIfDirectoryExists(path)) {
             LOG.debug("Output path changes to $path")
             outputPath = path
             PATH_CHANGED_SUCCESS

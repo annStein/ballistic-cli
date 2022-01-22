@@ -18,5 +18,4 @@ interface BallisticComputations {
      * Computes the maximum height of the projectile (h_max) and the maximum traveled distance (x_max).
      */
     fun computeValues(ballisticInput: BallisticInput): BallisticResult
-    fun computeValues(v0: Int, alpha: Int): BallisticResult
 }
