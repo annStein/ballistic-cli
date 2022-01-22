@@ -7,7 +7,7 @@ The task was a simple CLI to calculate ballistic trajectories.
 
 Clone the repository and run the application.<br>
 
-If results are to be saved later, the output path should be defined first if necessary (command: _change-out-path_)
+If results are to be saved later, the output path should be defined first if necessary (command: _change-out-path_)<br>
 
 ## Available Commands
 
@@ -20,3 +20,4 @@ If results are to be saved later, the output path should be defined first if nec
 |h-max | Computes the maximum height of the projectile.|
 |x-max | Computes the maximum traveled distance.|
 |help | Returns all commands and explanations |
+Please note: Args must be separated by spaces. To write the compute results to files add _--to-file_.
