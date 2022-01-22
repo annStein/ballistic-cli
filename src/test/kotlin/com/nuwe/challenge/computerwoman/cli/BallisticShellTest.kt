@@ -72,16 +72,17 @@ class BallisticShellTest {
         assertEquals(fakeJson, result)
     }
 
-//    @Test
-//    fun `WHEN compute values from file input THEN values are computed`() {
-//        val testInputPath = "resources/test_input.json"
-//        val shellUnderTest: BallisticShell = spy(BallisticShell(ballisticComputer, jsonHelper, log))
-//        doReturn(fakeJson).`when`(shellUnderTest).compute(fakeInput, false)
-//        whenever<BallisticShell>(jsonHelper.readJsonInput()).then()
-//
-//        val result = shellUnderTest.computeFile(testInputPath, false)
-//        assertEquals(fakeJson, result)
-//    }
+    @Test
+    fun `WHEN compute values from file input THEN values are computed`() {
+        // Note: Inline-Functions not yet mockable --> read Json could not be mocked
+        val realJsonHelper = JsonHelper(fileHelper)
+        val shellUnderTest: BallisticShell = spy(BallisticShell(ballisticComputer, realJsonHelper, fileHelper, log))
+        doReturn(fakeJson).`when`(shellUnderTest).compute(fakeInput, false)
+
+        val testInputPath = "src/test/resources/test_input.json"
+        val result = shellUnderTest.computeFile(testInputPath, false)
+        assertEquals(fakeJson, result)
+    }
 
     @Test
     fun `WHEN compute BallisticInput AND should be written to file THEN invoke writing file`() {
