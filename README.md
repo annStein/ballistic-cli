@@ -5,7 +5,7 @@ The task was a simple CLI to calculate ballistic trajectories.
 
 ## Getting Started
 
-Clone the repository and run the application.<br>
+Clone the repository and run the application with `./gradlew bootRun`.<br>
 
 If results are to be saved later, the output path should be defined first if necessary (command: `change-out-path <new-path>`)<br>
 
