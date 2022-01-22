@@ -7,7 +7,7 @@ The task was a simple CLI to calculate ballistic trajectories.
 
 Clone the repository and run the application.<br>
 
-If results are to be saved later, the output path should be defined first if necessary (command: _change-out-path_)<br>
+If results are to be saved later, the output path should be defined first if necessary (command: `change-out-path <new-path>`)<br>
 
 ## Available Commands
 
@@ -21,9 +21,9 @@ If results are to be saved later, the output path should be defined first if nec
 |x-max | Computes the maximum traveled distance.|
 |help | Returns all commands and explanations |
 
-Please note: args must be entered separated by spaces. To write the compute results to files add _--to-file_.
+Please note: args must be entered separated by spaces. To write the compute results to files add `--to-file`.<br>
+To receive more help for specific commands type `help <command>`.
 
-Please note: Args must be separated by spaces. To write the compute results to files add _--to-file_.
 
 ## Error Information
 
