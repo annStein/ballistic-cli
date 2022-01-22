@@ -1,14 +1,31 @@
 package com.nuwe.challenge.computerwoman.helper
 
 import com.nuwe.challenge.computerwoman.cli.exception.AppException
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.extension.ExtendWith
+import org.junit.platform.runner.JUnitPlatform
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.jupiter.MockitoExtension
+import org.slf4j.Logger
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
+@ExtendWith(MockitoExtension::class)
+@RunWith(JUnitPlatform::class)
 class FileHelperTest {
 
-    val helperUnderTest = FileHelper()
+    @Mock
+    private lateinit var log: Logger
+
+    private lateinit var helperUnderTest: FileHelper
+
+    @BeforeEach
+    fun setup() {
+        helperUnderTest = FileHelper(log)
+    }
 
     @Test
     fun `WHEN checking if dir exists AND dir exists THEN return True`() {

@@ -1,5 +1,6 @@
 package com.nuwe.challenge.computerwoman.cli
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.nhaarman.mockitokotlin2.*
 import com.nuwe.challenge.computerwoman.computing.BallisticComputationsImpl
 import com.nuwe.challenge.computerwoman.helper.FileHelper
@@ -75,7 +76,7 @@ class BallisticShellTest {
     @Test
     fun `WHEN compute values from file input THEN values are computed`() {
         // Note: Inline-Functions not yet mockable --> read Json could not be mocked
-        val realJsonHelper = JsonHelper(fileHelper)
+        val realJsonHelper = JsonHelper(fileHelper, jacksonObjectMapper(), mock())
         val shellUnderTest: BallisticShell = spy(BallisticShell(ballisticComputer, realJsonHelper, fileHelper, log))
         doReturn(fakeJson).`when`(shellUnderTest).compute(fakeInput, false)
 

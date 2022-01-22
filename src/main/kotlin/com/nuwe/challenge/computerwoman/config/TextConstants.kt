@@ -23,3 +23,4 @@ const val OUTPUT_PATH = "Path where the computed results should be stored."
 
 // Error Messages for user
 const val ERROR_NO_FILE_OR_DIR = "ERROR: Directory or file does not exist. Please try again with another path."
+const val ERROR_GENERAL = "ERROR: Something went wrong. Please try again or contact the author."

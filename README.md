@@ -21,4 +21,12 @@ If results are to be saved later, the output path should be defined first if nec
 |x-max | Computes the maximum traveled distance.|
 |help | Returns all commands and explanations |
 
+Please note: args must be entered separated by spaces. To write the compute results to files add _--to-file_.
+
 Please note: Args must be separated by spaces. To write the compute results to files add _--to-file_.
+
+## Error Information
+
+This CLI has user friendly error messages. Whenever you want to debug the app, the actual errors are written in a
+logfile
+(computerwoman.log).

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 import kotlin.math.sin
 
 @Component
-class BallisticComputationsImpl: BallisticComputations {
+class BallisticComputationsImpl : BallisticComputations {
     override fun calcMaxHeight(v0: Int): Double {
         return (v0 * v0) / (2 * g)
     }

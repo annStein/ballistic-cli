@@ -47,16 +47,20 @@ class BallisticShell(
     }
 
     @ShellMethod(COMPUTE_MANUAL)
-    fun computeManual(@ShellOption(help = V0) v0: Int,
-                      @ShellOption(help = ALPHA) alpha: Int,
-                      @ShellOption(help = TO_FILE) toFile: Boolean): String {
+    fun computeManual(
+        @ShellOption(help = V0) v0: Int,
+        @ShellOption(help = ALPHA) alpha: Int,
+        @ShellOption(help = TO_FILE) toFile: Boolean
+    ): String {
         val input = BallisticInput(v0, alpha)
         return compute(input, toFile)
     }
 
     @ShellMethod(COMPUTE_FILE)
-    fun computeFile(@ShellOption(help = PATH_TO_FILE) pathToFile: String,
-                    @ShellOption(help = TO_FILE) toFile: Boolean): String {
+    fun computeFile(
+        @ShellOption(help = PATH_TO_FILE) pathToFile: String,
+        @ShellOption(help = TO_FILE) toFile: Boolean
+    ): String {
         val input = jsonHelper.readJsonInput<BallisticInput>(pathToFile)
         return compute(input, toFile)
     }
