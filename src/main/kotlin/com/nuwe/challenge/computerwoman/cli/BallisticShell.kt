@@ -22,6 +22,20 @@ class BallisticShell(
 
     var outputPath: String = "${System.getProperty("user.home")}/Documents/"
 
+    @ShellMethod(ECHO_OUTPUT_PATH)
+    fun outPath() = outputPath
+
+    @ShellMethod(CHANGE_PATH)
+    fun changeOutPath(@ShellOption(help = OUTPUT_PATH) path: String) =
+        if (fileHelper.checkIfDirectoryExists(path)) {
+            LOG.debug("Output path changes to $path")
+            outputPath = path
+            PATH_CHANGED_SUCCESS
+        } else {
+            LOG.debug("Output path could not be changed: ($path)")
+            "$PATH_CHANGED_FAILED$path"
+        }
+
     @ShellMethod(H_MAX)
     fun hMax(@ShellOption(help = V0) v0: Int): Double {
         return ballisticComputer.calcMaxHeight(v0)
@@ -59,18 +73,4 @@ class BallisticShell(
             }
         }
     }
-
-    @ShellMethod(ECHO_OUTPUT_PATH)
-    fun outPath() = outputPath
-
-    @ShellMethod(CHANGE_PATH)
-    fun changeOutPath(@ShellOption(help = OUTPUT_PATH) path: String) =
-        if (fileHelper.checkIfDirectoryExists(path)) {
-            LOG.debug("Output path changes to $path")
-            outputPath = path
-            PATH_CHANGED_SUCCESS
-        } else {
-            LOG.debug("Output path could not be changed: ($path)")
-            "$PATH_CHANGED_FAILED$path"
-        }
 }
