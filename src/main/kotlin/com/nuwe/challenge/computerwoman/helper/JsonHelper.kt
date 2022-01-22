@@ -17,7 +17,7 @@ class JsonHelper(
      * @param obj object to store
      */
     fun writeJsonFile(path: String, obj: Any) {
-        // TODO: catch exception for weird object type (not data class/could not be written)
+        // TODO: catch exception for weird object type
         val file = fileHelper.createFile(path, "json")
         mapper.writerWithDefaultPrettyPrinter().writeValue(file, obj)
     }
@@ -28,7 +28,7 @@ class JsonHelper(
      * @return json string
      */
     fun <T> convertObjectToJsonString(obj: T): String {
-        // TODO: catch exception for weird object type (not data class/could not be written)
+        // TODO: catch exception for weird object type
         return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj)
     }
 
@@ -37,7 +37,7 @@ class JsonHelper(
      * @param
      */
     final inline fun <reified T> readJsonInput(filePath: String): T {
-        // TODO: catch exception for weird object type (not data class/could not be written)
+        // TODO: catch exception for weird object type
         val file = File(filePath)
         val res = mapper.readValue(file, T::class.java)
         return res

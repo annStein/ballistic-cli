@@ -11,6 +11,7 @@ const val X_MAX = "Computes the maximum traveled distance."
 const val COMPUTE = "Computes the maximum height of the projectile and the maximum traveled distance."
 const val COMPUTE_MANUAL = "$COMPUTE Input via args."
 const val COMPUTE_FILE = "$COMPUTE Input via JSON-File (path)."
+const val ECHO_OUTPUT_PATH = "Returns the current path where results are stored."
 const val CHANGE_PATH = "Changes the output path for results."
 
 // Shell-Help for params

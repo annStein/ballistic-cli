@@ -20,7 +20,7 @@ class BallisticShell(
     val LOG: Logger
 ) {
 
-    var outputPath: String = "${System.getProperty("user.home")}/Documents/nuwe_challenges/results"
+    var outputPath: String = "${System.getProperty("user.home")}/Documents/"
 
     @ShellMethod(H_MAX)
     fun hMax(@ShellOption(help = V0) v0: Int): Double {
@@ -60,8 +60,11 @@ class BallisticShell(
         }
     }
 
+    @ShellMethod(ECHO_OUTPUT_PATH)
+    fun outPath() = outputPath
+
     @ShellMethod(CHANGE_PATH)
-    fun changePath(@ShellOption(help = OUTPUT_PATH) path: String) =
+    fun changeOutPath(@ShellOption(help = OUTPUT_PATH) path: String) =
         if (fileHelper.checkIfDirectoryExists(path)) {
             LOG.debug("Output path changes to $path")
             outputPath = path
