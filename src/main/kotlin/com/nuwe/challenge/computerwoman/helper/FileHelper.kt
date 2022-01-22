@@ -1,4 +1,4 @@
-package com.nuwe.challenge.computerwoman.helpers
+package com.nuwe.challenge.computerwoman.helper
 
 import java.io.File
 

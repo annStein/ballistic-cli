@@ -1,8 +1,6 @@
-package com.nuwe.challenge.computerwoman.helpers
+package com.nuwe.challenge.computerwoman.helper
 
-import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.nuwe.challenge.computerwoman.model.BallisticInput
 import java.io.File
 import java.lang.System.currentTimeMillis
 

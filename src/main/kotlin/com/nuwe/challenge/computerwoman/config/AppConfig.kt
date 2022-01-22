@@ -27,8 +27,8 @@ class AppConfig {
     fun promptProvider(): PromptProvider? {
         return PromptProvider {
             AttributedString(
-                "ballisticshell=>",
-                AttributedStyle.DEFAULT.foreground(AttributedStyle.CYAN)
+                "ballisticShell=>",
+                AttributedStyle.DEFAULT
             )
         }
     }
